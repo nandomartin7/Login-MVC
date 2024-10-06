@@ -2,6 +2,10 @@
     <div>
       
       <!-- Botón para ver todos los clientes -->
+      <button @click="cerrarSesion">Cerrar la Sesion</button>
+      
+      
+      <!-- Botón para ver todos los clientes -->
       <button @click="fetchClientes">Ver Todos los Clientes</button>
       
       <!-- Botón para agregar nuevo cliente -->
@@ -130,6 +134,10 @@
       },
       cancelarEdicion() {
         this.clienteEditando = null;
+      },
+      cerrarSesion() {
+        localStorage.removeItem('token'); // Eliminar el token de localStorage
+        this.$router.push('/login'); // Redirigir a la página de login
       },
       eliminarCliente(id) {
         axios.delete(`http://localhost:8080/clientes/${id}`)

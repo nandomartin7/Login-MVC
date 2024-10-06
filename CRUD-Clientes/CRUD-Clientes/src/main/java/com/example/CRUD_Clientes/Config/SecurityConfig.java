@@ -28,14 +28,13 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())  // Deshabilitar CSRF para facilitar la API REST
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/login", "/auth/register").permitAll()  // Permitir acceso sin autenticación a login y registro
-                        .requestMatchers("/clientes/**").authenticated()  // Proteger las rutas de clientes
+                        .requestMatchers("/clientes/**").permitAll()  // Proteger las rutas de clientes
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))  // Indica que no se manejarán sesiones de usuario en el servidor
                 .logout(logout -> logout.permitAll())  // Permitir logout
                 .build();
     }
-
 
 
     @Bean
