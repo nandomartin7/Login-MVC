@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-    <h1>CRUD de Clientes</h1>
+  <div id="app" >
+    <h1 class="principal">CRUD de Clientes</h1>
     <router-view></router-view>
   </div>
 </template>
@@ -10,3 +10,10 @@ export default {
   name: 'App'
 };
 </script>
+
+
+<style scoped>
+.principal{
+  text-align: center;
+}
+</style>

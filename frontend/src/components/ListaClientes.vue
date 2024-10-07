@@ -2,16 +2,18 @@
     <div>
       
       <!-- Botón para ver todos los clientes -->
-      <button @click="cerrarSesion">Cerrar la Sesion</button>
+      <button @click="cerrarSesion" class="btnCerrarSesion">Cerrar la Sesion</button>
       
       
       <!-- Botón para ver todos los clientes -->
-      <button @click="fetchClientes">Ver Todos los Clientes</button>
+      <p>
+        <button @click="fetchClientes" class="btnVerClientes">Ver Todos los Clientes</button>
+      </p>
       
       <!-- Botón para agregar nuevo cliente -->
       <p>
         <router-link to="/formulario-cliente">
-            <button>Agregar Cliente</button> 
+            <button class="btnAgregarCliente">Agregar Cliente</button> 
         </router-link>
       </p>
 
@@ -19,7 +21,7 @@
       <!-- Búsqueda por ID -->
       <div>
         <input v-model="searchId" placeholder="Buscar por ID del Cliente" />
-        <button @click="buscarCliente">Buscar</button>
+        <button @click="buscarCliente" class="btnBuscarCliente">Buscar</button>
       </div>
       
       <h2>Lista de Clientes</h2>
@@ -41,9 +43,9 @@
             <td>{{ cliente.apellido }}</td>
             <td>{{ cliente.cedula }}</td>
             <td>
-              <button @click="verCliente(cliente)">Ver</button>
-              <button @click="editarCliente(cliente)">Editar</button>
-              <button @click="eliminarCliente(cliente.idCliente)">Eliminar</button>
+              <button @click="verCliente(cliente)" class="btnVerCliente">Ver</button>
+              <button @click="editarCliente(cliente)" class="btnEditarCliente">Editar</button>
+              <button @click="eliminarCliente(cliente.idCliente)" class="btnEliminarCliente">Eliminar</button>
             </td>
           </tr>
         </tbody>
@@ -158,19 +160,133 @@
   };
   </script>
   
+
   <style scoped>
+  .btnCerrarSesion{
+    width: 30%; /* Los botones ocupan el % del ancho del contenedor */
+    padding: 12px; /* Espacio interior del botón */
+    background-color: red; 
+    color: black; 
+    border: none; 
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 15px;  
+    margin-top: 10px; /* Espacio superior entre botones */
+    cursor: pointer; /* Cambia el cursor a mano al pasar por encima */
+    transition: background-color 0.3s, margin 0.3s; /* Transiciones suaves al hacer hover */
+    text-align: center; 
+    font-weight: bold;
+  }
+
+  .btnVerClientes{
+    width: 30%; /* Los botones ocupan el 100% del ancho del contenedor */
+    padding: 12px; /* Espacio interior del botón */
+    background-color: rgb(247, 247, 241); 
+    color: black;  
+    border: none; 
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 15px; 
+    margin-top: 10px; /* Espacio superior entre botones */
+    cursor: pointer; /* Cambia el cursor a mano al pasar por encima */
+    transition: background-color 0.3s, margin 0.3s; /* Transiciones suaves al hacer hover */
+    text-align: center; 
+  }
+
+  .btnAgregarCliente{
+    width: 30%; /* Los botones ocupan el 100% del ancho del contenedor */
+    padding: 12px; /* Espacio interior del botón */
+    background-color: rgb(247, 247, 241); 
+    color: black; 
+    border: none; 
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 15px; 
+    margin-top: 10px; /* Espacio superior entre botones */
+    cursor: pointer; /* Cambia el cursor a mano al pasar por encima */
+    transition: background-color 0.3s, margin 0.3s; /* Transiciones suaves al hacer hover */
+    text-align: center; 
+  }
+
+  .btnBuscarCliente{
+    width: 30%; /* Los botones ocupan el 100% del ancho del contenedor */
+    padding: 12px; /* Espacio interior del botón */
+    background-color: rgb(247, 247, 241);
+    color: black; 
+    border: none; 
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 15px;
+    margin-top: 10px; /* Espacio superior entre botones */
+    cursor: pointer; /* Cambia el cursor a mano al pasar por encima */
+    transition: background-color 0.3s, margin 0.3s; /* Transiciones suaves al hacer hover */
+    text-align: center; 
+  }
+  
+  h2 {
+    text-align: center; 
+    color: #333333; 
+    font-family: 'Arial', sans-serif; 
+    margin-bottom: 20px; /* Espacio inferior del título */
+  }
+
   table {
     width: 100%;
     border-collapse: collapse;
   }
   
-  th, td {
+  th{
+    background-color: aqua;
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+  }
+
+  td{
     border: 1px solid black;
     padding: 8px;
     text-align: left;
   }
   
+  .btnVerCliente{
+    width: 20%; /* Los botones ocupan el 100% del ancho del contenedor */
+    padding: 12px; /* Espacio interior del botón */
+    background-color: rgb(26, 228, 26);
+    color: black; 
+    border: none; 
+    border-radius: 5px; /* Bordes redondeados */
+    margin-top: 10px; /* Espacio superior entre botones */
+    cursor: pointer; /* Cambia el cursor a mano al pasar por encima */
+    transition: background-color 0.3s, margin 0.3s; /* Transiciones suaves al hacer hover */
+    text-align: center; 
+    font-weight: bold;
+  }
+
+  .btnEditarCliente{
+    width: 20%; /* Los botones ocupan el 100% del ancho del contenedor */
+    padding: 12px; /* Espacio interior del botón */
+    background-color: rgb(255, 191, 0); 
+    color: black; 
+    border: none; 
+    border-radius: 5px; /* Bordes redondeados */
+    margin-top: 10px; /* Espacio superior entre botones */
+    cursor: pointer; /* Cambia el cursor a mano al pasar por encima */
+    transition: background-color 0.3s, margin 0.3s; /* Transiciones suaves al hacer hover */
+    text-align: center; 
+    font-weight: bold;
+  }
+
+  .btnEliminarCliente{
+    width: 25%; /* Los botones ocupan el 100% del ancho del contenedor */
+    padding: 12px; /* Espacio interior del botón */
+    background-color: red; 
+    color: black; 
+    border: none; 
+    border-radius: 5px; /* Bordes redondeados */
+    margin-top: 10px; /* Espacio superior entre botones */
+    cursor: pointer; /* Cambia el cursor a mano al pasar por encima */
+    transition: background-color 0.3s, margin 0.3s; /* Transiciones suaves al hacer hover */
+    text-align: center; 
+    font-weight: bold;
+  }
+
   button {
-    margin-right: 5px;
+    margin-right: 10px;
   }
   </style>
